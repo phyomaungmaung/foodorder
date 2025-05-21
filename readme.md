@@ -16,7 +16,7 @@ Before installing the project, make sure you have the following installed on you
 1. **Clone the Repository**
 
    ```bash
-   git clone [your-repository-url]
+   git clone https://github.com/phyomaungmaung/foodorder
    cd foodorder
    ```
 
@@ -24,10 +24,6 @@ Before installing the project, make sure you have the following installed on you
 
    - Create a new MySQL database
    - Import the database sql file:
-
-     ```
-
-     ```
 
    - The default admin credentials are:
      - Email: admin@fooder.com
@@ -114,7 +110,7 @@ Before installing the project, make sure you have the following installed on you
 
 ## Support
 
-For any issues or questions, please [create an issue](your-repository-issues-url) in the repository.
+For any issues or questions, please [create an issue](https://github.com/phyomaungmaung/foodorder/issues) in the repository.
 
 ## License
 
