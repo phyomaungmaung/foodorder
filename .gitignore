@@ -1,0 +1,64 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+/vendor/
+/node_modules/
+
+# Log files
+*.log
+logs/
+error_log
+access_log
+
+# Cache and temporary files
+*.cache
+*.tmp
+*.temp
+/cache/
+/temp/
+
+# Uploaded files and media
+/uploads/*
+!/uploads/.gitkeep
+
+# Zip File
+*.zip
+
+# Configuration files with sensitive data
+config.php
+config.local.php
+*.config.php
+
+# Compiled files
+*.css.map
+*.js.map
+*.min.css
+*.min.js
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# XAMPP/Laragon specific
+/xampp/
+/laragon/
+*.ini 
