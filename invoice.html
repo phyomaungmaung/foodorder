@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Invoice - Fooder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-100">
+    <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-orange-500">Fooder</h1>
+            <h2 class="text-2xl font-bold mt-4">Order Invoice</h2>
+          </div>
+
+          <div id="invoiceContent">
+            <!-- Invoice content will be dynamically loaded here -->
+          </div>
+
+          <div class="mt-8 text-center">
+            <a
+              href="index.html"
+              class="inline-block bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600"
+            >
+              Return to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get("orderId");
+
+        if (!orderId) {
+          console.error("Order ID is missing");
+          // window.location.href = "index.html";
+          return;
+        }
+
+        try {
+          console.log("Fetching invoice for Order ID:", orderId);
+          const response = await fetch(
+            `api/get_invoice.php?orderId=${orderId}`
+          );
+          console.log("API Response:", response);
+
+          const data = await response.json();
+          console.log("API Data:", data);
+
+          if (data.success) {
+            const invoiceContent = document.getElementById("invoiceContent");
+            invoiceContent.innerHTML = `
+        <div class="mb-6">
+          <p class="text-gray-600">Order ID: ${data.order.id}</p>
+          <p class="text-gray-600">Date: ${new Date(
+            data.order.created_at
+          ).toLocaleString()}</p>
+          <p class="text-gray-600">Customer: ${data.order.customer_name}</p>
+        </div>
+        <div class="border-t border-b py-4 mb-4">
+          <div class="grid grid-cols-4 font-bold text-gray-700 mb-2">
+            <div>Item</div>
+            <div class="text-center">Quantity</div>
+            <div class="text-right">Price</div>
+            <div class="text-right">Total</div>
+          </div>
+          ${data.order.items
+            .map((item) => {
+              // Ensure price is a number
+              const price = parseFloat(item.price) || 0;
+              const quantity = parseInt(item.quantity) || 0;
+              return `
+              <div class="grid grid-cols-4 py-2">
+                <div>${item.name}</div>
+                <div class="text-center">${quantity}</div>
+                <div class="text-right">${price.toFixed(2)} MMK</div>
+                <div class="text-right">${(price * quantity).toFixed(
+                  2
+                )} MMK</div>
+              </div>
+            `;
+            })
+            .join("")}
+        </div>
+        <div class="text-right">
+          <p class="text-xl font-bold">Total: ${(
+            parseFloat(data.order.total_amount) || 0
+          ).toFixed(2)} MMK
+      `;
+          } else {
+            console.error("API Error:", data.message);
+            const invoiceContent = document.getElementById("invoiceContent");
+            invoiceContent.innerHTML = `<p class="text-red-500">${data.message}</p>`;
+          }
+        } catch (error) {
+          console.error("Fetch Error:", error);
+          alert("Error loading invoice");
+          // window.location.href = "index.html";
+        }
+      });
+    </script>
+  </body>
+</html>

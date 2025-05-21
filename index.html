@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fooder - Food Ordering System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .gloock-regular {
+        font-family: "Gloock", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-slate-900 shadow-lg bg-banner-img p-4">
+      <div class="max-w-6xl mx-auto px-4 uppercase">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <a
+              href="index.html"
+              class="text-5xl font-bold text-orange-500 gloock-regular"
+              >BOJF</a
+            >
+          </div>
+          <div class="hidden md:flex items-center space-x-6">
+            <a href="index.html" class="text-gray-100 hover:text-orange-500"
+              >Home</a
+            >
+            <a href="#about" class="text-gray-100 hover:text-orange-500"
+              >About Us</a
+            >
+            <a href="#menu" class="text-gray-100 hover:text-orange-500">Menu</a>
+            <a
+              href="#"
+              id="cartBtn"
+              class="text-gray-100 hover:text-orange-500"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span
+                id="cartCount"
+                class="bg-orange-500 text-white rounded-full px-2 py-1 text-xs"
+                >0</span
+              >
+            </a>
+            <div id="authLinks" class="flex items-center space-x-4">
+              <a href="login.html" class="text-gray-100 hover:text-orange-500"
+                >Login</a
+              >
+              <a
+                href="register.html"
+                class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
+                >Register</a
+              >
+            </div>
+            <div id="userMenu" class="relative">
+              <button
+                id="userMenuBtn"
+                class="flex items-center space-x-2 text-gray-100 hover:text-orange-500 transition-colors duration-200"
+              >
+                <span id="userName" class="uppercase">Loading...</span>
+                <i
+                  class="fas fa-chevron-down text-sm transition-transform duration-200"
+                ></i>
+              </button>
+              <div
+                id="userMenuDropdown"
+                class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 transform scale-95 opacity-0 invisible transition-all duration-200 origin-top-right z-50"
+              >
+                <a
+                  href="dashboard.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition-colors duration-200"
+                  >Dashboard</a
+                >
+                <a
+                  href="#"
+                  id="logoutBtn"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition-colors duration-200"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="relative bg-orange-500 h-screen bg-banner-img">
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative max-w-6xl mx-auto pt-10 flex items-center">
+        <div class="text-white ani">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            Delicious Food Delivered
+          </h1>
+          <p class="text-xl mb-8">
+            Order your favorite meals from the best restaurants in town
+          </p>
+          <a
+            href="#menu"
+            class="bg-white text-orange-500 px-8 py-3 rounded-md font-bold hover:bg-gray-100"
+            >Order Now</a
+          >
+        </div>
+        <div class="ani">
+          <img
+            src="https://demo.bravisthemes.com/wellfood/wp-content/uploads/2025/01/Image2-ss1-h1.webp"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="about"
+      class="max-w-6xl mx-auto px-4 py-20 grid grid-cols-2 gap-6 items-center"
+    >
+      <div>
+        <h1 class="text-4xl font-bold mb-4">About Us</h1>
+        <p class="text-gray-600 mb-4 text-xl">
+          Discover a world of flavors! Order your favorite food and drinks
+          online with just a few clicks
+        </p>
+        <div class="flex flex-row gap-2">
+          <div class="flex items-center gap-2 bg-slate-200 p-2 rounded-lg">
+            <i class="fas fa-check-circle text-green-500"></i>
+            <p>Contact: 09 991 091 109</p>
+          </div>
+          <div class="flex items-center gap-2 bg-slate-200 p-2 rounded-lg">
+            <i class="fas fa-check-circle text-green-500"></i>
+            <p>Email : OxFoodie@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img
+          src="https://cdn.pixabay.com/photo/2022/01/28/12/17/delivery-6974508_960_720.jpg"
+          alt=""
+          class="w-full h-full object-cover rounded-lg"
+        />
+      </div>
+    </div>
+
+    <section id="menu" class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Menu</h2>
+
+      <!-- Filter buttons container -->
+      <div
+        class="flex flex-wrap justify-center gap-2 mb-8"
+        id="categoryFilters"
+      >
+        <button
+          class="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 active-filter"
+          data-category="all"
+        >
+          All Items
+        </button>
+        <!-- Other category buttons will be added dynamically -->
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ani"
+        id="menuItems"
+      >
+        <!-- Menu items will be dynamically loaded here -->
+      </div>
+    </section>
+
+    <!-- Fly Cart -->
+    <div
+      id="flyCart"
+      class="fixed right-0 top-0 h-full w-80 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50"
+    >
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">Your Cart</h3>
+          <button id="closeCart" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div id="cartItems" class="space-y-4">
+          <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="mt-4 border-t pt-4">
+          <div class="flex justify-between mb-4">
+            <span class="font-bold">Total:</span>
+            <span id="cartTotal" class="font-bold">0.00 MMK</span>
+          </div>
+          <button
+            id="checkoutBtn"
+            class="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize ScrollReveal
+      const sr = ScrollReveal({
+        reset: false,
+        distance: "50px",
+        delay: 500,
+      });
+
+      // Use the instance to reveal elements
+      sr.reveal(".ani");
+    </script>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

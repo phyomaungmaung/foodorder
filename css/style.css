@@ -1,0 +1,5 @@
+.bg-banner-img {
+  background-image: url("../img/bg.webp");
+  background-size: cover;
+  background-position: center;
+}

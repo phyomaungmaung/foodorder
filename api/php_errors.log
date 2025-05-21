@@ -1,0 +1,6 @@
+[13-May-2025 03:18:12 UTC] Exception: Unknown database 'foodorder'
+Trace:
+#0 C:\laragon\www\foodorder\config\database.php(13): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'foodorder')
+#1 C:\laragon\www\foodorder\api\get_product.php(30): require_once('C:\\laragon\\www\\...')
+#2 {main}
+[21-May-2025 09:09:46 UTC] Error in admin_get_order_details.php: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.address' in 'field list'
